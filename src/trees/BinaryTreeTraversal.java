@@ -5,6 +5,16 @@ import java.util.LinkedList;
 
 public class BinaryTreeTraversal {
 
+	/*
+	 * Given a binary tree design an algorithm  which creates a linked list of all the nodes
+	 * at each depth (if you have a tree with depth D, you'll have D linked lists)
+	 */
+	public static <T> ArrayList<LinkedList<BinaryTree<T>>> createLevelLinkedList(BinaryTree<T> root) {
+		ArrayList<LinkedList<BinaryTree<T>>> lists = new ArrayList<LinkedList<BinaryTree<T>>>();
+		createLevelLinkedList(root, lists, 0);
+		return lists;
+	}
+	
 	public static <T> void createLevelLinkedList(BinaryTree<T> root, ArrayList<LinkedList<BinaryTree<T>>> lists, 
 		int level) {
 		if (root == null) return; // base case
@@ -22,12 +32,6 @@ public class BinaryTreeTraversal {
 		list.add(root);
 		createLevelLinkedList(root.leftChild, lists, level + 1);
 		createLevelLinkedList(root.rightChild, lists, level + 1);
-	}
-	
-	public static <T> ArrayList<LinkedList<BinaryTree<T>>> createLevelLinkedList(BinaryTree<T> root) {
-		ArrayList<LinkedList<BinaryTree<T>>> lists = new ArrayList<LinkedList<BinaryTree<T>>>();
-		createLevelLinkedList(root, lists, 0);
-		return lists;
 	}
 	
 	public static boolean checkBST(BinaryTree<Integer> n) {

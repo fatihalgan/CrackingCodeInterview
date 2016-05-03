@@ -32,5 +32,10 @@ public class BinarySearchTree<T extends Comparable<T>> extends BinaryTree<T> {
 		return this;
 	}
 	
-	
+	public BinaryTree<T> addChild(T d) {
+		if(d.compareTo(this.data) <= 0)
+			addLeftChild(d);
+		else addRightChild(d);
+		return this;
+	}
 }

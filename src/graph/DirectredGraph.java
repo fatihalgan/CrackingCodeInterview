@@ -1,6 +1,5 @@
 package graph;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -10,6 +9,7 @@ import java.util.Set;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.*;
+
 public class DirectredGraph<T> implements Iterable<Vertex<T>> {
 
 	private final Map<Vertex<T>, Set<Vertex<T>>> mGraph = new HashMap<>();

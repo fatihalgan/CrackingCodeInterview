@@ -113,14 +113,19 @@ public class BinaryTree<T> {
 	}
 	
 	public boolean isIdentical(BinaryTree<T> other) {
-		if(!other.data.equals(data)) return false;
-		if(leftChild == null && other.leftChild == null) return true;
-		if(rightChild == null && other.rightChild == null) return true;
+		if(other == null) return false;
+		if(!data.equals(other.data)) return false;
 		if(leftChild == null && other.leftChild != null) return false;
 		if(rightChild == null && other.rightChild != null) return false;
-		if(other.leftChild == null && leftChild != null) return false;
-		if(other.rightChild == null && rightChild != null) return false;
-		return leftChild.isIdentical(other.leftChild) && rightChild.isIdentical(other.rightChild);
+		boolean leftIdentical = true;
+		boolean rightIdentical = true;
+		if(leftChild != null) {
+			leftIdentical = leftChild.isIdentical(other.leftChild);
+		}
+		if(rightChild != null) {
+			leftIdentical = leftChild.isIdentical(other.leftChild);
+		}
+		return leftIdentical && rightIdentical;
 	}
 	
 	public boolean isSubTree(BinaryTree<T> other) {
